@@ -78,7 +78,7 @@ with tabs[1]:
         sk = st.session_state['sk']
         bd2 = st.session_state['bd2']
 
-        base_url = 'https://gabcares-team-curium.hf.space/'
+        base_url = 'https://ml-api-with-fastapi.onrender.com/'
         url = base_url + f"{ 'xgboost_prediction' if selected_model == 'xgboost' else 'random_forest_prediction'}"
 
         data = {
@@ -90,7 +90,7 @@ with tabs[1]:
 
         if response_status.status_code == 200:
             response = requests.post(url, json=data, timeout=30)
-            pred_prob = (response.json()['result'])
+            pred_prob = (response.json()['results'])
             prediction = pred_prob['prediction']
             probability = pred_prob['probability']
 
