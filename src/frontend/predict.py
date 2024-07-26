@@ -97,7 +97,7 @@ with tabs[1]:
             st.session_state['prediction'] = prediction
             st.session_state['probability'] = probability
         else:
-            st.write('Unable to connect to the server.')
+            st.write('Unable to connect to the server. Try Again Later.')
 
     # Creating the form
     def display_form():
@@ -140,7 +140,7 @@ with tabs[1]:
             st.divider()
         else:
             if final_prediction.lower() == 'positive':
-                st.markdown(f'### Patient is likely to develop sepsis.')
+                st.markdown(f'### ')
                 st.markdown(f'## Probability: {final_probability:.2f}%')
             else:
                 st.markdown(f'### Patient is unlikely to develop sepsis.')
