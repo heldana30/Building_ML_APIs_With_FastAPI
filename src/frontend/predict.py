@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 import requests
 import time
 
@@ -140,8 +139,8 @@ with tabs[1]:
             st.divider()
         else:
             if final_prediction.lower() == 'positive':
-                st.markdown(f'### ')
+                st.markdown(f'### Patient is at risk of developing sepsis.')
                 st.markdown(f'## Probability: {final_probability:.2f}%')
             else:
-                st.markdown(f'### Patient is unlikely to develop sepsis.')
+                st.markdown(f'### Patient is not at risk of developing sepsis.')
                 st.markdown(f'## Probability: {final_probability:.2f}%')

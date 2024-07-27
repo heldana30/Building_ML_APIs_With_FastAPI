@@ -24,11 +24,11 @@ def status_check():
     return {"Status": "API is online....."}
 
 
-xgboost_pipeline = joblib.load("models/xgboost.joblib")
+xgboost_pipeline = joblib.load("../../models/xgboost.joblib")
 
-random_forest_pipeline = joblib.load("models/random_forest.joblib")
+random_forest_pipeline = joblib.load("../../models/random_forest.joblib")
 
-encoder = joblib.load("models/encoder.joblib")
+encoder = joblib.load("../../models/encoder.joblib")
 
 
 @app.post('/xgboost_prediction')
