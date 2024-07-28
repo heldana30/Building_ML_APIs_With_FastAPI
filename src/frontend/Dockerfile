@@ -10,4 +10,4 @@ WORKDIR /app
 
 EXPOSE 3000
 
-CMD [ "streamlit", "run",  "predict.py", "--server.port=8501"]
+CMD [ "streamlit" , "run",  "predict.py", "--server.port=8501", "--port", "80" ]
