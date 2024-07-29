@@ -1,6 +1,6 @@
 ## Building Sepsis Prediction ML_API With_FastAPI
 
-<img src="dev/Screenshots/homepic.jpg" alt="Logo" width="400"/>
+<img src="dev/Screenshots/homepic.jpg" alt="Logo" width="800" height="400"/>
 
 ## Overview
 
