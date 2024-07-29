@@ -1,6 +1,6 @@
 ## Building Sepsis Prediction ML_API With_FastAPI
 
-<img src="dev/Screenshots/homepic.jpg" alt="Logo" width="800" height="400"/>
+<img src="dev/Screenshots/homepic.jpg" alt="Logo" width="700" height="400"/>
 
 ## Overview
 
@@ -49,7 +49,7 @@ Ensure you have Docker and Docker Compose installed on your machine.
    pip install -r requirements.txt
    ```
 
-5. Build and run the Docker containers:
+5. Build and run the Docker containers in the root directory:
 
     ```sh
     docker-compose up --build
