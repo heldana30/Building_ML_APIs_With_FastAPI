@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import joblib
 from pydantic import BaseModel
 import pandas as pd
+import os
 
 
 app = FastAPI()
@@ -24,12 +25,11 @@ def status_check():
     return {"Status": "API is online....."}
 
 
-xgboost_pipeline = joblib.load("../../models/xgboost.joblib")
+xgboost_pipeline = joblib.load(os.getenv('XGBOOST_MODEL_PATH', 'dev/models/xgboost.joblib'))
 
-random_forest_pipeline = joblib.load("../../models/random_forest.joblib")
+random_forest_pipeline = joblib.load(os.getenv('RANDOM_FOREST_MODEL_PATH', 'dev/models/random_forest.joblib'))
 
-encoder = joblib.load("../../models/encoder.joblib")
-
+encoder = joblib.load(os.getenv('ENCODER_PATH', 'dev/models/encoder.joblib'))
 
 @app.post('/xgboost_prediction')
 def predict_proba_sepsis(data: SepsisFeatures):

@@ -1,13 +1,19 @@
 FROM python:3.10.9
 
-COPY requirements.txt /temp/requirements.txt
-
-RUN python -m pip install --timeout 300000 -r /temp/requirements.txt
-
-COPY . /app
-
+# Set working directory
 WORKDIR /app
 
-EXPOSE 3000
+# Copy requirements file
+COPY ./src/frontend/requirements.txt /app/
 
-CMD [ "streamlit" , "run",  "predict.py", "--server.port=8501", "--port", "80" ]
+# Install dependencies
+RUN python -m pip install --timeout 300000 --no-cache-dir -r /app/requirements.txt
+
+# Copy the application code
+COPY ./src/frontend /app
+
+# Expose port
+EXPOSE 8501
+
+# Command to run the Streamlit app
+CMD ["streamlit", "run", "predict.py", "--server.port", "8501", "--server.address", "0.0.0.0"]

@@ -3,14 +3,28 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./src/backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: src/backend/Dockerfile
     ports:
       - '8080:8000'
+    environment:
+      - XGBOOST_MODEL_PATH=/app/models/xgboost.joblib
+      - RANDOM_FOREST_MODEL_PATH=/app/models/random_forest.joblib
+      - ENCODER_PATH=/app/models/encoder.joblib
+    networks:
+      - sepsis-net
 
   frontend:
     build:
-      context: ./src/frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: src/frontend/Dockerfile
     ports:
-      - '3000:8501'
+      - '8501:8501'
+    networks:
+      - sepsis-net
+    environment:
+      - BACKEND_URL=http://backend:8000
+
+networks:
+  sepsis-net:
+    driver: bridge

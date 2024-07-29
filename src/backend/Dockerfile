@@ -1,13 +1,27 @@
 FROM python:3.10.9
 
-COPY requirements.txt /temp/requirements.txt
+# Set working directory
+WORKDIR /app
 
-RUN python -m pip install --timeout 300000 -r /temp/requirements.txt
+# Copy requirements file
+COPY ./src/backend/requirements.txt /app/
 
-COPY . /
+# Install dependencies
+RUN python -m pip install --timeout 300000 --no-cache-dir -r /app/requirements.txt
 
-WORKDIR /src
+# Copy the application code
+COPY ./src/backend /app
 
-EXPOSE 8080
+# Copy the model files from dev/models
+COPY ./dev/models /app/models
 
-CMD [ "uvicorn" , "api:app",  '--host', "0.0.0.0", "--port", "8000" ]
+# Set environment variables for model paths
+ENV XGBOOST_MODEL_PATH=/app/models/xgboost.joblib
+ENV RANDOM_FOREST_MODEL_PATH=/app/models/random_forest.joblib
+ENV ENCODER_PATH=/app/models/encoder.joblib
+
+# Expose port
+EXPOSE 8000
+
+# Command to run the API
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
