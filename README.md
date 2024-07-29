@@ -1,6 +1,6 @@
 ## Building Sepsis Prediction ML_API With_FastAPI
 
-![Logo](dev/Screenshots/homepic.jpg)
+<img src="dev/Screenshots/homepic.jpg" alt="Logo" width="400"/>
 
 ## Overview
 
@@ -27,17 +27,35 @@ Ensure you have Docker and Docker Compose installed on your machine.
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/yourusername/sepsis-prediction-api.git
-    cd sepsis-prediction-api
+    https://github.com/heldana30/Building_ML_APIs_With_FastAPI.git
     ```
+2. Navigate to the project directory:
+   ```bash
+   cd Building_ML_APIs_With_FastAPI
+   ```
+3. Create a virtual environment and activate it:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate  # On MAC use `source venv/bin/activate `
+   
+   ```
+4. Install the required packages on each of the src directory:
+   ```bash
+   cd src/backend
+   pip install -r requirements.txt
+   ```
+    ```bash
+   cd src/frontend
+   pip install -r requirements.txt
+   ```
 
-2. Build and run the Docker containers:
+5. Build and run the Docker containers:
 
     ```sh
     docker-compose up --build
     ```
 
-3. The backend API will be available at `http://localhost:8080`, and the frontend will be available at `http://localhost:8501`.
+6. The backend API will be available at `http://localhost:8080`, and the frontend will be available at `http://localhost:8501`.
 
 ### Remote Deployment
 
